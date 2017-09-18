@@ -1,5 +1,5 @@
 import urllib2, time, xmltodict, argparse
-# import onionGpio
+import onionGpio
 
 #Args and help
 parser = argparse.ArgumentParser(description='Fetch Italian earthquakes from INGV website and buzz with an Omega Onion2+')
@@ -15,8 +15,8 @@ mag = str(args.mag)
 buzz = args.time
 
 #Set GPIO
-# gpioNum = 0
-# gpioObj	= onionGpio.OnionGpio(gpioNum)
+gpioNum = 0
+gpioObj	= onionGpio.OnionGpio(gpioNum)
 
 requestURL = "http://webservices.ingv.it/fdsnws/event/1/query?minmag="+mag+"&maxmag=10&mindepth=-10&maxdepth=1000&minlat=35&maxlat=49&minlon=5&maxlon=20&minversion=1&orderby=time"
 
@@ -31,14 +31,14 @@ def checkLast():
 	last = 0
 	newId = data['q:quakeml']['eventParameters']['event'][0]['@publicID']
 	if(lastId != newId):
-		print "* Ultimo terremoto:",data['q:quakeml']['eventParameters']['event'][0]['description']['text'],"{",newId,"}"
+		print "* Last earthquale:",data['q:quakeml']['eventParameters']['event'][0]['description']['text'],"{",newId,"}"
 		lastId = newId
 		#Make it bip!
-		# status 	= gpioObj.setOutputDirection(0)		# initialize the GPIO to 0 (LOW)
+		status 	= gpioObj.setOutputDirection(0)		# initialize the GPIO to 0 (LOW)
 		time.sleep(buzz)
-		# status  = gpioObj.setInputDirection()
+		status  = gpioObj.setInputDirection()
 	else:
-		print "* Nessun nuovo terremoto, ultimo id", lastId
+		print "* No new earthquake, last id:", lastId
 	print '---'
 
 while True:
