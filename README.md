@@ -3,8 +3,9 @@ This script fetch earthquake list form INGV website in *QuakeML* format every mi
 
 **The script uses hardware implementation with Onion Omega2+. See this post for more info about the hardware**
 
-##Usage
-```terr.py [-h] [-m MAG] [-t TIME]
+## Usage
+```shell
+terr.py [-h] [-m MAG] [-t TIME]
 
 optional arguments:
   -h, --help            show this help message and exit
