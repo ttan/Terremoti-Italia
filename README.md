@@ -1,11 +1,11 @@
 # Terremoti Italia
 This script fetch earthquake list form INGV website in *QuakeML* format every minute. If a new earthquake is found, it buzzes via GPIO interface.
 
-**The script uses hardware implementation with Onion Omega2+. See this post for more info about the hardware**
+**The script uses hardware implementation with Onion Omega2+. See [this post](https://blog.ttan.org/earthquake-monitor-with-omega2-ac86583476b4) for more info about the hardware**
 
 ## Usage
 ```shell
-terr.py [-h] [-m MAG] [-t TIME]
+earthquakes-italy.py [-h] [-m MAG] [-t TIME]
 
 optional arguments:
   -h, --help            show this help message and exit
